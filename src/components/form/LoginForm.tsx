@@ -1,57 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import SignInButton from './../navbar/SignInButton';
-import SignOutButton from './../navbar/SignOutButton';
-import { useHistory } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from './../../context/LoginContext';
 
-interface User {
-  email: string;
-  password: string;
-}
-const defaultUser: User = {
-  email: '',
-  password: '',
-};
-
-const LoginForm: React.FC = () => {
-  const history = useHistory();
-  const [auth, setAuth] = useState(defaultUser);
-
-  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    history.push('../../pages/create-recipe');
-    localStorage.setItem('email', auth.email);
-    alert(auth.email + ' Has logged in');
-    setAuth(defaultUser);
+const LoginForm = (props: any) => {
+  const { setLoggedIn } = useContext(AuthContext);
+  const handelLogOut = () => {
+    setLoggedIn(false);
+    localStorage.removeItem('username');
+    localStorage.removeItem('password');
+    localStorage.removeItem('email');
   };
-
-  const handelChange = <P extends keyof User>(prop: P, value: User[P]) => {
-    setAuth({ ...auth, [prop]: value });
-  };
-
   return (
-    <>
-      <form onSubmit={onSubmitHandler} className='login-form'>
-        <input
-          type='email'
-          placeholder='Email'
-          value={auth.email}
-          onChange={(e) => {
-            handelChange('email', e.target.value);
-          }}
+    <div className='flex-row my-3 my-md-0'>
+      <Link to='#' className='text-white mr-2 header-search-icon'>
+        <i className='fas fa-search'></i>
+      </Link>
+      <span className='mr-2 header-chat-icon text-white'>
+        Hey
+        <strong> {JSON.parse(localStorage.getItem('username'))}</strong>
+        <span className='chat-count-badge text-white'> </span>
+      </span>
+      <Link to='#' className='mr-2'>
+        <img
+          alt='avatar'
+          className='small-header-avatar'
+          src='https://picsum.photos/200'
         />
-        <input
-          type='password'
-          placeholder='Password'
-          value={auth.password}
-          onChange={(e) => {
-            handelChange('password', e.target.value);
-          }}
-        />
-        <button type='submit' className='signin-btn'>
-          Sign in
-        </button>
-      </form>
-    </>
+      </Link>
+      <Link to='/create-recipe' className='btn btn-sm btn-success mr-2'>
+        Create Recipe
+      </Link>
+      <button onClick={handelLogOut} className='btn btn-sm btn-secondary'>
+        Sign Out
+      </button>
+    </div>
   );
 };
 

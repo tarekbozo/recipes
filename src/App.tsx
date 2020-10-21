@@ -1,13 +1,18 @@
 import React from 'react';
 import Navbar from './components/navbar/NavBar';
-import './layout/styles.scss';
+import './layout/styles.css';
 import Routing from './routes/Routing';
+import LoginContext from './context/LoginContext';
+import Footer from './components/Footer';
 
 const App: React.FC = () => {
   return (
     <>
-      <Navbar />
-      <Routing />
+      <LoginContext>
+        <Navbar />
+        <Routing />
+        <Footer />
+      </LoginContext>
     </>
   );
 };

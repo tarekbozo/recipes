@@ -14,8 +14,8 @@ const Routing = () => {
         <Route exact path='/' component={Home} />
         <Route path='/recipes' component={Recipes} />
         <Route path='/ingredients' component={Ingredients} />
-        <Route path='/pages/loginForm' component={LoginForm} />
-        <Route path='/pages/create-recipe' component={CreateRecipe} />
+        <Route path='/loginForm' component={LoginForm} />
+        <Route path='/create-recipe' component={CreateRecipe} />
         <Route component={NotFound} />
       </Switch>
     </>
