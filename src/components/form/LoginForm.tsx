@@ -11,26 +11,25 @@ const LoginForm = (props: any) => {
     localStorage.removeItem('email');
   };
   return (
-    <div className='flex-row my-3 my-md-0'>
-      <Link to='#' className='text-white mr-2 header-search-icon'>
-        <i className='fas fa-search'></i>
+    <div className="flex-row my-3 my-md-0">
+      <Link to="#" className="text-white mr-2 header-search-icon">
+        <i className="fas fa-search"></i>
       </Link>
-      <span className='mr-2 header-chat-icon text-white'>
+      <span className="mr-2 header-chat-icon text-white">
         Hey
-        <strong> {JSON.parse(localStorage.getItem('username'))}</strong>
-        <span className='chat-count-badge text-white'> </span>
+        <span className="chat-count-badge text-white"> </span>
       </span>
-      <Link to='#' className='mr-2'>
+      <Link to="#" className="mr-2">
         <img
-          alt='avatar'
-          className='small-header-avatar'
-          src='https://picsum.photos/200'
+          alt="avatar"
+          className="small-header-avatar"
+          src="https://picsum.photos/200"
         />
       </Link>
-      <Link to='/create-recipe' className='btn btn-sm btn-success mr-2'>
+      <Link to="/create-recipe" className="btn btn-sm btn-success mr-2">
         Create Recipe
       </Link>
-      <button onClick={handelLogOut} className='btn btn-sm btn-secondary'>
+      <button onClick={handelLogOut} className="btn btn-sm btn-secondary">
         Sign Out
       </button>
     </div>

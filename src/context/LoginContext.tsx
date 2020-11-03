@@ -1,15 +1,11 @@
 import React, { createContext, useState } from 'react';
 
-type FormElm = React.FormEvent<HTMLFormElement>;
-
 export const AuthContext = createContext<any>(null);
 
 const LoginContext: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [username, setUsername] = useState<any>(
-    Boolean(localStorage.getItem('username'))
-  );
+  const [username, setUsername] = useState<any>();
 
   const [password, setPassword] = useState<any>('');
   const [loggedIn, setLoggedIn] = useState<any>();

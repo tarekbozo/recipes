@@ -1,22 +1,29 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from './../context/LoginContext';
 
 type FormElm = React.FormEvent<HTMLFormElement>;
 
 const Home = () => {
-  const [username, setUsername] = useState('');
+  const { setUsername, username } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const onsubmitHandler = (e: FormElm) => {
     e.preventDefault();
     try {
-      localStorage.setItem('username', JSON.stringify(username));
-      localStorage.setItem('password', JSON.stringify(password));
-      localStorage.setItem('email', JSON.stringify(email));
-      console.log('user was successfully created', username, password, email);
+      localStorage.setItem('username', username);
+      localStorage.setItem('password', password);
+      localStorage.setItem('email', email);
+
+      console.log('user was successfully created');
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const saveUser = (e: any) => {
+    setUsername(e);
+    localStorage.setItem('username', e);
   };
   return (
     <div className='container py-md-5'>
@@ -34,8 +41,7 @@ const Home = () => {
                 <small>Username</small>
               </label>
               <input
-                onChange={(e) => setUsername(e.target.value)}
-                id='username-register'
+                onChange={(e) => saveUser(e.target.value)}
                 name='username'
                 className='form-control'
                 type='text'
@@ -49,7 +55,6 @@ const Home = () => {
               </label>
               <input
                 onChange={(e) => setEmail(e.target.value)}
-                id='email-register'
                 name='email'
                 className='form-control'
                 type='text'
@@ -63,7 +68,6 @@ const Home = () => {
               </label>
               <input
                 onChange={(e) => setPassword(e.target.value)}
-                id='password-register'
                 name='password'
                 className='form-control'
                 type='password'

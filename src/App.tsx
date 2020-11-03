@@ -4,14 +4,19 @@ import './layout/styles.css';
 import Routing from './routes/Routing';
 import LoginContext from './context/LoginContext';
 import Footer from './components/Footer';
+import SpinnerContext from './context/SpinnerContext';
+import Spinner from './components/Spinner';
 
 const App: React.FC = () => {
   return (
     <>
       <LoginContext>
-        <Navbar />
-        <Routing />
-        <Footer />
+        <SpinnerContext>
+          <Navbar />
+          <Spinner />
+          <Routing />
+          <Footer />
+        </SpinnerContext>
       </LoginContext>
     </>
   );

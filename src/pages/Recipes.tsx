@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { FoodApi } from './../api/FoodApi';
 
 const Recipes = () => {
   return (
-    <div>
-      <h1>Recipes Page</h1>
-    </div>
-  )
-}
+    <>
+      <h1 style={{ padding: '3rem' }}>Ricipes Page</h1>
 
-export default Recipes
+      <FoodApi />
+    </>
+  );
+};
+
+export default Recipes;
