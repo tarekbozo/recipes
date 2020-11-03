@@ -5,7 +5,6 @@ import Routing from './routes/Routing';
 import LoginContext from './context/LoginContext';
 import Footer from './components/Footer';
 import SpinnerContext from './context/SpinnerContext';
-import Spinner from './components/Spinner';
 
 const App: React.FC = () => {
   return (
@@ -13,7 +12,7 @@ const App: React.FC = () => {
       <LoginContext>
         <SpinnerContext>
           <Navbar />
-          <Spinner />
+
           <Routing />
           <Footer />
         </SpinnerContext>

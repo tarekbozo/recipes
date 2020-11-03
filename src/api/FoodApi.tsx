@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import Recipes from '../pages/Recipes';
 import { SpinnerContext } from './../context/SpinnerContext';
 
 export const FoodApi = () => {
